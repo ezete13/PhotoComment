@@ -1,0 +1,66 @@
+<!--------------------------------COMENTARIOS---------------------------------->      
+<section>
+<!--ENTRADA COMENTARIO--> 
+    <div class="container">
+      <div class="d-flex align-items-center">
+      <!--Input Comentario-->          
+        <input [(ngModel)]="nuevoComentario" placeholder="Escribe un comentario" class="input-text">          
+      <!--Boton--> 
+        <button (click)="agregarComentario()" class="btn btn-outline-primary">
+          Listo
+        </button>
+      </div>
+    </div>
+<!--CAJA COMENTARIO-->
+
+    <div *ngIf="comentarios.length > 0">
+      <h3 class="h3 my-3">Comentarios</h3>
+              <div *ngFor="let comentario of comentarios; let i = index">                                                                               
+                  <div *ngIf="!comentario.editando" class="d-flex align-items-center my-3 h3">
+                        <!-- Avatar--> 
+                        <img class="avatar me-3" [src]="comentario.imagenUrl" alt="Imagen" width="30" height="30">
+                        <!-- Comentario--> 
+                        <div class="input-group flex-grow-1">{{ comentario.texto }}</div>
+                        <!--Boton Editar--> 
+                        <div class="dropdown">
+                          <a type="text" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="icon mx-2 px-4">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+                                <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                              </svg>
+                            </div>                                          
+                          </a>
+                          <!--Opciones-->  
+                          <ul class="dropdown-menu dropdown-menu-end">     
+                            <li class="dropdown-item h3" (click)="editarComentario(comentario)">Editar</li>
+                            <li class="dropdown-item text-danger h3" (click)="eliminarComentario(comentario)">Eliminar</li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-secondary h3" href="#">Reportar</a></li>
+                          </ul>
+                        </div>
+                  </div>
+                        <!--Cueadro Edicion-->  
+                        <div *ngIf="comentario.editando" class="d-flex align-items-center justify-content-end">
+                            <!--Entrada Texto-->  
+                            <input class="input-text" type="text" [(ngModel)]="comentario.textoEditado" />
+                            <!--Boton Guardar-->  
+                            <button class="btn btn-outline-success" (click)="guardarEdicion(comentario, i)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                                    <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+                                </svg>
+                            </button>
+                            <!--Boton Cancelar-->  
+                            <button class="btn btn-outline-danger" (click)="cancelarEdicion(comentario)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                                </svg>
+                          </button>
+                        </div>
+              </div>
+    </div>
+</section>
+
+
+
+
+
