@@ -47,5 +47,6 @@ Este proyecto es una aplicación web desarrollada en Angular para una entrega un
 Este proyecto fue desarrollado como parte de un proyecto universitario por Ezequiel Tello.
 
 # Licencia
-Este proyecto está bajo la licencia [Licencia] - consulta el archivo [LICENSE.md] para más detalles.
+Este proyecto está bajo la licencia [Licencia](LICENSE.md) - consulta el archivo [LICENSE.md] para más detalles.
+
 
